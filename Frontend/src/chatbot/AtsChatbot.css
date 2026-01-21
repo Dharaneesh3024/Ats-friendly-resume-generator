@@ -1,0 +1,122 @@
+.ai-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* ChatGPT-like modal */
+.ai-search-modal {
+  background: #ffffff;
+  width: 520px;
+  max-height: 80vh;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-header h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.ai-header button {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ai-search-modal input {
+  margin-top: 14px;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+}
+
+.ai-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.generate-btn {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.generate-btn:hover {
+  background: #4338ca;
+}
+
+.clear-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: transparent;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background: #f3f4f6;
+}
+
+.ai-results {
+  margin-top: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ai-bullet {
+  background: #f3f4f6;
+  padding: 10px 12px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ai-bullet span {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.ai-bullet button {
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.ai-bullet button:hover {
+  background: #16a34a;
+}
+
+.hint {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+}

@@ -1,0 +1,86 @@
+.resume {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  color: #000;
+  line-height: 1.5;
+}
+
+.header {
+  text-align: left;
+  margin-bottom: 12px;
+}
+
+.header h1 {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.header-line {
+  font-size: 11px;
+}
+
+.resume-section {
+  margin-bottom: 14px;
+}
+
+.resume h2 {
+  font-size: 14px;
+  margin-bottom: 6px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 2px;
+}
+
+.item {
+  margin-bottom: 8px;
+}
+
+.item-title {
+  font-weight: bold;
+}
+
+.item-subtitle {
+  font-size: 11px;
+}
+
+ul {
+  margin-left: 18px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+.resume {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000;
+}
+
+h1, h2 {
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
+ul {
+  padding-left: 16px;
+}
+
+li {
+  margin-bottom: 4px;
+}
+
+/* ❌ NO icons, colors, columns, tables */
+.download-btn {
+  margin-top: 16px;
+  background-color: #111827;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.download-btn:hover {
+  background-color: #000;
+}
