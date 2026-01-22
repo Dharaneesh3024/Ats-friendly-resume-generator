@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useResume } from "../context/ResumeContext";
+import ReactMarkdown from "react-markdown"; // Recommended for neat formatting
 import "./atsSearchAI.css";
 
 export default function AtsSearchAI({ isOpen, onClose }) {
   const { resume } = useResume();
   const modalRef = useRef(null);
+  const bottomRef = useRef(null);
 
   const [query, setQuery] = useState("");
-  const [bullets, setBullets] = useState(() => {
-    const saved = localStorage.getItem("ats_ai_bullets");
+  const [chatHistory, setChatHistory] = useState(() => {
+    const saved = localStorage.getItem("ats_ai_history");
     return saved ? JSON.parse(saved) : [];
   });
   const [loading, setLoading] = useState(false);
@@ -19,97 +21,96 @@ export default function AtsSearchAI({ isOpen, onClose }) {
     ...(resume.skills?.tools || [])
   ];
 
-  /* ✅ Persist bullets */
   useEffect(() => {
-    localStorage.setItem("ats_ai_bullets", JSON.stringify(bullets));
-  }, [bullets]);
+    localStorage.setItem("ats_ai_history", JSON.stringify(chatHistory));
+    // Auto-scroll to bottom on new message
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatHistory, loading]);
 
-  /* ✅ Close on outside click */
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) {
-        onClose();
-      }
+      if (modalRef.current && !modalRef.current.contains(e.target)) onClose();
     };
-
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    if (isOpen) document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen, onClose]);
 
   const generate = async () => {
-    if (!query.trim()) return alert("Type something");
+    if (!query.trim()) return;
 
+    const userMessage = { role: "user", text: query };
+    setChatHistory((prev) => [...prev, userMessage]);
+    setQuery("");
     setLoading(true);
 
     try {
       const res = await fetch("http://localhost:5000/api/suggest-bullets", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          roleQuery: query,
-          skills
-        })
+        body: JSON.stringify({ roleQuery: query, skills })
       });
 
       const data = await res.json();
-      setBullets((prev) => [...prev, ...(data.bullets || [])]);
-      setQuery(""); // ChatGPT-like behavior
+      // Assume backend returns an array of bullets or a single string
+      const aiText = Array.isArray(data.bullets) ? data.bullets.join("\n\n") : data.answer;
+      
+      setChatHistory((prev) => [...prev, { role: "ai", text: aiText }]);
     } catch (err) {
-      console.error(err);
-      alert("Failed to generate");
+      setChatHistory((prev) => [...prev, { role: "ai", text: "⚠️ Failed to reach AI server." }]);
     } finally {
       setLoading(false);
     }
   };
 
-  const clearChat = () => {
-    setBullets([]);
-    localStorage.removeItem("ats_ai_bullets");
-  };
-
   return (
     <div className={`ai-overlay ${isOpen ? "open" : "hidden"}`}>
       <div className="ai-search-modal" ref={modalRef}>
-        {/* HEADER */}
         <div className="ai-header">
-          <h3>AI Resume Assistant</h3>
-          <div>
-            <button onClick={clearChat}>Clear</button>
-            <button onClick={onClose}>✕</button>
+          <div className="header-info">
+            <span className="ai-badge">AI</span>
+            <h3>Resume Assistant</h3>
+          </div>
+          <div className="header-actions">
+            <button className="text-btn" onClick={() => {setChatHistory([]); localStorage.removeItem("ats_ai_history");}}>Clear</button>
+            <button className="close-btn" onClick={onClose}>✕</button>
           </div>
         </div>
 
-        {/* RESULTS */}
         <div className="ai-results">
-          {bullets.length === 0 && (
-            <p className="hint">Ask for resume bullets like ChatGPT…</p>
-          )}
-
-          {bullets.map((b, i) => (
-            <div key={i} className="ai-result-item">
-              <span>{b}</span>
-              <button onClick={() => navigator.clipboard.writeText(b)}>
-                Copy
-              </button>
+          {chatHistory.length === 0 && <p className="hint">Try: "Write 3 bullet points for a React role using my skills"</p>}
+          
+          {chatHistory.map((msg, i) => (
+            <div key={i} className={`message-wrapper ${msg.role}`}>
+              <div className="message-bubble">
+                <ReactMarkdown>{msg.text}</ReactMarkdown>
+                {msg.role === "ai" && (
+                  <button className="copy-btn" onClick={() => navigator.clipboard.writeText(msg.text)}>
+                    Copy content
+                  </button>
+                )}
+              </div>
             </div>
           ))}
+          
+          {loading && (
+            <div className="message-wrapper ai">
+              <div className="message-bubble loading-dots">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+          )}
+          <div ref={bottomRef} />
         </div>
 
-        {/* INPUT BAR */}
         <div className="ai-input-bar">
           <input
-            className="ai-search-input"
-            placeholder="Ask like: Frontend developer resume points"
+            placeholder="Ask AI to optimize your resume..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && generate()}
           />
-          <button className="generate-btn" onClick={generate}>
-            {loading ? "Generating..." : "Send"}
+          <button className="send-btn" onClick={generate} disabled={loading || !query.trim()}>
+            {loading ? "..." : "Send"}
           </button>
         </div>
       </div>
