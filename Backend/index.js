@@ -62,7 +62,13 @@ app.post("/api/chat", async (req, res) => {
     });
   }
 });
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`✅ Llama 3.3 Backend running at http://localhost:${PORT}`);
-});
+// Export the app for Vercel's serverless environment
+export default app;
+
+// Keep this only for local development testing
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`✅ Llama 3.3 Backend running at http://localhost:${PORT}`);
+  });
+}
