@@ -18,6 +18,10 @@ const groq = new Groq({
 // ===============================
 // Chatbot route (Llama 3.3 70B)
 // ===============================
+app.get("/", (req, res) => {
+  res.json({ status: "Server is live", message: "Send a POST request to /api/chat to talk to the AI." });
+});
+
 app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
 
