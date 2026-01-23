@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import html2pdf from "html2pdf.js";
-import AtsTemplate from "../templates/AtsTemplate";
+import AtsTemplate from "../templates/atsTemplate";
 import { useResume } from "../context/ResumeContext";
 
 const ResumePreview = () => {
