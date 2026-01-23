@@ -120,3 +120,60 @@
   color: #6b7280;
   text-align: center;
 }
+.ai-results {
+  margin-top: 16px;
+  overflow-y: auto;
+  flex: 1; /* Critical: allows results to grow/shrink */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 5px; /* Space for scrollbar */
+}
+
+/* 2. Chat bubbles for better mobile layout */
+.ai-result-item {
+  max-width: 90%;
+  word-wrap: break-word;
+  white-space: pre-wrap; /* Keeps AI line breaks */
+}
+
+/* 3. Mobile Specific Adjustments */
+@media (max-width: 600px) {
+  .ai-overlay {
+    align-items: flex-end; /* Slides the modal to the bottom like a mobile sheet */
+    padding: 0;
+  }
+
+  .ai-search-modal {
+    width: 100%;
+    max-height: 92vh; /* Use more height on mobile */
+    border-radius: 20px 20px 0 0; /* Rounded only at top */
+    padding: 20px 15px;
+  }
+
+  .ai-header h3 {
+    font-size: 16px;
+  }
+
+  /* Make buttons easier to tap (Touch Target) */
+  .generate-btn, .clear-btn {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .ai-search-modal input {
+    font-size: 16px; /* CRITICAL: Prevents iOS auto-zoom on focus */
+    padding: 14px;
+  }
+  
+  .ai-bullet {
+    flex-direction: column; /* Stack text and copy button on mobile */
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .ai-bullet button {
+    width: 100%; /* Full width copy button for easy tapping */
+    padding: 8px;
+  }
+}

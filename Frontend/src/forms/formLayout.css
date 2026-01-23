@@ -212,4 +212,95 @@
 .ai-suggest-btn:hover {
   background: #4338ca;
 }
+/* --- UPDATED BASE STYLES --- */
+.builder-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows panels to stack on smaller screens */
+  gap: 20px;
+  padding: 20px;
+  background-color: #f5f7fb;
+  min-height: 100vh;
+}
 
+/* Adjust panels to use percentages but allow growth */
+.form-panel {
+  flex: 1 1 400px; /* Grow, shrink, and basis of 400px */
+  width: 40%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.preview-panel {
+  flex: 1 1 500px; /* Needs more space for the resume document */
+  width: 60%;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  /* Ensures the resume preview scales correctly */
+  overflow-x: auto; 
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+
+/* For Tablets and smaller Desktops */
+@media (max-width: 1024px) {
+  .builder-container {
+    padding: 15px;
+    gap: 16px;
+  }
+  
+  .form-panel, .preview-panel {
+    width: 100%; /* Stacks them vertically */
+    flex: none;
+  }
+}
+
+/* For Mobile Phones */
+@media (max-width: 600px) {
+  .builder-container {
+    padding: 10px;
+  }
+
+  .form-panel, .preview-panel {
+    padding: 15px;
+    border-radius: 8px;
+  }
+
+  .form-title {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  /* Make buttons full width for easier tapping */
+  .add-experience-btn, 
+  .add-education-btn, 
+  .add-project-btn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .button-group {
+    flex-direction: column; /* Stack "Add Point" and "AI Suggest" */
+  }
+
+  .add-point-btn, .ai-suggest-btn {
+    width: 100%;
+  }
+
+  /* Prevent horizontal scrolling of the whole page */
+  .preview-panel {
+    padding: 10px;
+    overflow-x: scroll;
+  }
+}
+@media (max-width: 600px) {
+  .preview-panel > div { 
+    /* This targets the actual resume container inside the panel */
+    transform: scale(0.8); /* Shrinks the preview slightly */
+    transform-origin: top left;
+    width: 125%; /* Compensate for the scale to avoid empty gaps */
+  }
+}
