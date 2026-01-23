@@ -44,10 +44,10 @@ export default function AtsSearchAI({ isOpen, onClose }) {
     setLoading(true);
 
     try {
-      const res = await fetch("http://localhost:5000/api/suggest-bullets", {
+      const res = await fetch("https://resume-generator-server-sepia.vercel.app/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ roleQuery: query, skills })
+        body: JSON.stringify({ message: query, skills })
       });
 
       const data = await res.json();
