@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useResume } from "../context/ResumeContext";
-import "./atsSearchAI.css";
+import "./AtsSearchAI.css";
 
 export default function AtsChatbot({ isOpen, onClose }) {
   const { resume } = useResume();

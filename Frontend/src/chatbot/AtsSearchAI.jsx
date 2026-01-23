@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useResume } from "../context/ResumeContext";
 import ReactMarkdown from "react-markdown"; // Recommended for neat formatting
-import "./atsSearchAI.css";
+import "./AtsSearchAI.css";
 
 export default function AtsSearchAI({ isOpen, onClose }) {
   const { resume } = useResume();
