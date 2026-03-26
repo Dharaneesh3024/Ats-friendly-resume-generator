@@ -1,0 +1,305 @@
+/* Modern Template Styles */
+.modern-resume {
+  font-family: 'Inter', sans-serif;
+  color: #1e293b;
+  line-height: 1.4;
+  padding: 20px;
+}
+
+.modern-header {
+  border-bottom: 2px solid #6366f1;
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.modern-header h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.modern-grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 30px;
+}
+
+.modern-sidebar {
+  border-right: 1px solid #e2e8f0;
+  padding-right: 20px;
+}
+
+.modern-section h2, .modern-section h3 {
+  color: #6366f1;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 4px;
+}
+
+.modern-section p {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.skill-group h4 {
+  font-size: 12px;
+  margin-bottom: 2px;
+  color: #475569;
+}
+
+.edu-item {
+  margin-bottom: 12px;
+}
+
+.edu-degree {
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.edu-inst {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.edu-year {
+  font-size: 11px;
+  font-style: italic;
+}
+
+.modern-item {
+  margin-bottom: 20px;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.role {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.dates {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.company {
+  font-weight: 600;
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 5px;
+}
+
+.points {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+}
+
+.tech {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+  margin-bottom: 5px;
+}
+.proj-link {
+  font-size: 11px;
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #e2e8f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.proj-link:hover {
+  background: #f5f7ff;
+}
+
+/* Minimalist Template Styles */
+.minimalist-resume {
+  font-family: 'Outfit', sans-serif;
+  color: #334155;
+  padding: 40px;
+}
+
+.min-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.min-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.min-tagline {
+  font-size: 14px;
+  color: #64748b;
+}
+
+.min-section {
+  margin-bottom: 25px;
+}
+
+.min-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #94a3b8;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.min-summary {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.min-skills p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.min-item {
+  margin-bottom: 15px;
+}
+
+.min-item-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.min-role, .min-inst {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.min-dates {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.min-company, .min-degree {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+
+.min-list {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+/* Template Selector Styles */
+.template-selector {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.template-selector h3 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.template-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+}
+
+.template-card {
+  border: 2px solid #f1f5f9;
+  border-radius: 12px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.template-card:hover {
+  border-color: #6366f1;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.1);
+}
+
+.template-card.active {
+  border-color: #6366f1;
+  background: #f5f7ff;
+  box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.15);
+}
+
+.template-preview-box {
+  height: 90px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.template-info h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.template-info p {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+/* Mini Previews */
+.mini-preview {
+  width: 100%;
+  height: 100%;
+}
+
+.ats-mini { 
+  background: 
+    linear-gradient(#e2e8f0 10px, transparent 10px) 10% 10% / 80% 2px no-repeat,
+    linear-gradient(#f1f5f9 5px, transparent 5px) 10% 30% / 80% 1px no-repeat,
+    linear-gradient(#f1f5f9 5px, transparent 5px) 10% 40% / 80% 1px no-repeat;
+  background-color: #fff;
+}
+
+.modern-mini { 
+  background: 
+    linear-gradient(to right, #f1f5f9 30%, #fff 30%); 
+}
+
+.minimalist-mini { 
+  border-top: 6px solid #6366f1;
+  background: #fff;
+}

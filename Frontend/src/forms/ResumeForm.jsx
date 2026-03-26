@@ -13,6 +13,12 @@ import AtsChatbot from "../chatbot/AtsChatbot";
 
 const ResumeForm = () => {
   const [showAI, setShowAI] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState("");
+
+  const handleSuggest = (prompt) => {
+    setAiPrompt(prompt);
+    setShowAI(true);
+  };
 
   return (
     <>
@@ -24,23 +30,24 @@ const ResumeForm = () => {
         <div className="section-card"><SkillsForm /></div>
 
         <div className="section-card">
-          <ExperienceForm onSuggestAI={() => setShowAI(true)} />
+          <ExperienceForm onSuggestAI={handleSuggest} />
         </div>
 
         <div className="section-card"><EducationForm /></div>
 
         <div className="section-card">
-          <ProjectsForm onSuggestAI={() => setShowAI(true)} />
+          <ProjectsForm onSuggestAI={handleSuggest} />
         </div>
       </div>
 
       {/* Floating button */}
-      <FloatingAI onClick={() => setShowAI(true)} />
+      <FloatingAI onClick={() => { setAiPrompt(""); setShowAI(true); }} />
 
       {/* AI CHATBOT */}
      <AtsChatbot
   isOpen={showAI}
-  onClose={() => setShowAI(false)}
+  onClose={() => { setShowAI(false); setAiPrompt(""); }}
+  contextualPrompt={aiPrompt}
 />
 
     </>

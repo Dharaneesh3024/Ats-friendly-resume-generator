@@ -94,9 +94,16 @@ const ExperienceForm = ({ onSuggestAI }) => {
             <button
               type="button"
               className="ai-suggest-btn"
-              onClick={onSuggestAI}
+              onClick={() => {
+                if (!exp.role || !exp.company) {
+                  alert("Please fill in Role and Company for AI suggestions.");
+                  return;
+                }
+                const allSkills = [...resume.skills.languages, ...resume.skills.frameworks].join(", ");
+                onSuggestAI(`Provide 3-4 professional ATS-friendly bullet points for my role as ${exp.role} at ${exp.company}. Useful skills: ${allSkills}.`);
+              }}
             >
-               Suggest Bullets
+              Suggest Bullets
             </button>
           </div>
         </div>

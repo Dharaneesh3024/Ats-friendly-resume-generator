@@ -51,6 +51,13 @@ const EducationForm = () => {
               updateEducation(index, "endYear", e.target.value)
             }
           />
+          <input
+            placeholder="GPA (optional)"
+            value={edu.gpa}
+            onChange={(e) =>
+              updateEducation(index, "gpa", e.target.value)
+            }
+          />
         </div>
       ))}
 

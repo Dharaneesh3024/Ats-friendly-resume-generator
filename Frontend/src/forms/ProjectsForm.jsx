@@ -48,6 +48,12 @@ const ProjectsForm = ({ onSuggestAI }) => {
             value={proj.title}
             onChange={(e) => updateProject(index, "title", e.target.value)}
           />
+          <input
+            className="input-field"
+            placeholder="Project Link (Optional)"
+            value={proj.link}
+            onChange={(e) => updateProject(index, "link", e.target.value)}
+          />
 
           <textarea
             className="input-field"
@@ -92,7 +98,13 @@ const ProjectsForm = ({ onSuggestAI }) => {
             <button
               type="button"
               className="ai-suggest-btn"
-              onClick={onSuggestAI}
+              onClick={() => {
+                if (!proj.title || !proj.description) {
+                  alert("Please fill in Project Title and Description for AI suggestions.");
+                  return;
+                }
+                onSuggestAI(`Suggest 3-4 ATS-friendly bullet points for my project "${proj.title}" using ${proj.technologies.join(", ")}. Description: ${proj.description}`);
+              }}
             >
               Suggest Bullets
             </button>

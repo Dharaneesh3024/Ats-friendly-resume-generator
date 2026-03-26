@@ -1,306 +1,129 @@
-.builder-container {
-  display: flex;
-  gap: 24px;
-  padding: 24px;
-  background-color: #f5f7fb;
-  min-height: 100vh;
-}
-
+/* Form UI Refresh */
 .form-panel {
-  width: 40%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.preview-panel {
-  width: 60%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .form-title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 16px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 .section-card {
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
+  background: #fcfcfd;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.section-card:hover {
+  border-color: #6366f1;
+  background: white;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.05);
 }
 
 .section-card h3 {
-  font-size: 15px;
-  margin-bottom: 12px;
-  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.section-card input,
-.section-card textarea {
+/* Input Styles */
+input, textarea {
   width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  font-size: 13px;
-}
-
-.section-card textarea {
-  resize: vertical;
-}
-.experience-card {
-  background-color: #fefefe;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.experience-card input {
-  width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  font-size: 13px;
-}
-
-.experience-card .points-container input {
-  margin-left: 12px;
-}
-
-.experience-card button {
-  background-color: #2563eb;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 6px;
-}
-
-.experience-card button:hover {
-  background-color: #1e40af;
-}
-.add-experience-btn {
-  background-color: #10b981; /* green accent for Add Experience */
-  color: white;
-  border: none;
-  padding: 8px 16px;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
   border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  margin-top: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #1e293b;
+  background: white;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
-.add-experience-btn:hover {
-  background-color: #059669;
-}
-.education-card {
-  background-color: #fefefe;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
-.education-card input {
-  width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  font-size: 13px;
-}
-
-.add-education-btn {
-  background-color: #f59e0b; /* orange accent */
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 500;
-  margin-top: 10px;
-}
-
-.add-education-btn:hover {
-  background-color: #d97706;
-}
-.project-card {
-  background-color: #fefefe;
-  border: 1px solid #e5e7eb;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.project-card input,
-.project-card textarea {
-  width: 100%;
-  padding: 8px 10px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  border: 1px solid #d1d5db;
-  font-size: 13px;
-}
-
-.project-card textarea {
+textarea {
+  min-height: 100px;
   resize: vertical;
 }
 
+/* Button Styles */
+.add-experience-btn, 
+.add-education-btn, 
 .add-project-btn {
-  background-color: #8b5cf6; /* purple accent */
-  color: white;
-  border: none;
-  padding: 8px 16px;
+  width: 100%;
+  padding: 0.75rem;
   border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
-  margin-top: 10px;
-}
-
-.add-project-btn:hover {
-  background-color: #7c3aed;
-}
-
-.add-project-point-btn {
-  background-color: #3b82f6; /* blue for add point */
-  color: white;
-  border: no
-}
-.button-group {
-  display: flex;
-  gap: 10px;   /* 👈 space between buttons */
-  margin-top: 8px;
-}
-.button-group {
-  display: flex;
-  gap: 10px;
-  margin-top: 8px;
-}
-
-
-.add-point-btn,
-.ai-suggest-btn {
-  padding: 8px 12px;
-  border-radius: 6px;
+  transition: all 0.2s;
   border: none;
-  font-size: 14px;
+  margin-top: 1rem;
+}
+
+.add-experience-btn { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+.add-experience-btn:hover { background: #fecaca; }
+
+.add-education-btn { background: #fef3c7; color: #d97706; border: 1px solid #fde68a; }
+.add-education-btn:hover { background: #fde68a; }
+
+.add-project-btn { background: #ede9fe; color: #7c3aed; border: 1px solid #ddd6fe; }
+.add-project-btn:hover { background: #ddd6fe; }
+
+.button-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.add-point-btn, .ai-suggest-btn {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .add-point-btn {
-    background: #4f46e5;
-  color: white;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
 }
 
 .ai-suggest-btn {
-  background: #4f46e5;
+  background: #6366f1;
   color: white;
+  border: none;
 }
 
-.ai-suggest-btn:hover {
-  background: #4338ca;
-}
-/* --- UPDATED BASE STYLES --- */
-.builder-container {
-  display: flex;
-  flex-wrap: wrap; /* Allows panels to stack on smaller screens */
-  gap: 20px;
-  padding: 20px;
-  background-color: #f5f7fb;
-  min-height: 100vh;
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Adjust panels to use percentages but allow growth */
-.form-panel {
-  flex: 1 1 400px; /* Grow, shrink, and basis of 400px */
-  width: 40%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
-.preview-panel {
-  flex: 1 1 500px; /* Needs more space for the resume document */
-  width: 60%;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  /* Ensures the resume preview scales correctly */
-  overflow-x: auto; 
-}
-
-/* --- RESPONSIVE MEDIA QUERIES --- */
-
-/* For Tablets and smaller Desktops */
-@media (max-width: 1024px) {
-  .builder-container {
-    padding: 15px;
-    gap: 16px;
-  }
-  
-  .form-panel, .preview-panel {
-    width: 100%; /* Stacks them vertically */
-    flex: none;
-  }
-}
-
-/* For Mobile Phones */
-@media (max-width: 600px) {
-  .builder-container {
-    padding: 10px;
-  }
-
-  .form-panel, .preview-panel {
-    padding: 15px;
-    border-radius: 8px;
-  }
-
-  .form-title {
-    font-size: 18px;
-    text-align: center;
-  }
-
-  /* Make buttons full width for easier tapping */
-  .add-experience-btn, 
-  .add-education-btn, 
-  .add-project-btn {
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .button-group {
-    flex-direction: column; /* Stack "Add Point" and "AI Suggest" */
-  }
-
-  .add-point-btn, .ai-suggest-btn {
-    width: 100%;
-  }
-
-  /* Prevent horizontal scrolling of the whole page */
-  .preview-panel {
-    padding: 10px;
-    overflow-x: scroll;
-  }
-}
-@media (max-width: 600px) {
-  .preview-panel > div { 
-    /* This targets the actual resume container inside the panel */
-    transform: scale(0.8); /* Shrinks the preview slightly */
-    transform-origin: top left;
-    width: 125%; /* Compensate for the scale to avoid empty gaps */
-  }
+.section-card {
+  animation: fadeIn 0.4s ease forwards;
 }

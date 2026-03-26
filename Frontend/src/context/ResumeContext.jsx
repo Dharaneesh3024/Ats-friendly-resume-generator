@@ -5,9 +5,10 @@ const ResumeContext = createContext();
 
 export const ResumeProvider = ({ children }) => {
   const [resume, setResume] = useState(resumeSchema);
+  const [selectedTemplate, setSelectedTemplate] = useState("ats");
 
   return (
-    <ResumeContext.Provider value={{ resume, setResume }}>
+    <ResumeContext.Provider value={{ resume, setResume, selectedTemplate, setSelectedTemplate }}>
       {children}
     </ResumeContext.Provider>
   );

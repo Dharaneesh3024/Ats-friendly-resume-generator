@@ -49,6 +49,7 @@ ul {
 li {
   margin-bottom: 4px;
 }
+
 .resume {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 11pt;
@@ -56,7 +57,8 @@ li {
   color: #000;
 }
 
-h1, h2 {
+h1,
+h2 {
   color: #000;
   border-bottom: 1px solid #000;
 }
@@ -84,6 +86,7 @@ li {
 .download-btn:hover {
   background-color: #000;
 }
+
 /* --- UPDATED BASE STYLES --- */
 .resume {
   font-family: Arial, Helvetica, sans-serif;
@@ -91,10 +94,12 @@ li {
   line-height: 1.4;
   color: #000;
   background: white;
-  padding: 40px; /* Standard resume padding */
+  padding: 40px;
+  /* Standard resume padding */
   margin: 0 auto;
   width: 100%;
-  max-width: 800px; /* Typical A4 width on web */
+  max-width: 800px;
+  /* Typical A4 width on web */
   box-sizing: border-box;
 }
 
@@ -102,19 +107,23 @@ li {
 
 @media (max-width: 768px) {
   .resume {
-    padding: 20px; /* Reduce padding so text has more room */
-    font-size: 10pt; /* Slightly smaller text for mobile */
+    padding: 20px;
+    /* Reduce padding so text has more room */
+    font-size: 10pt;
+    /* Slightly smaller text for mobile */
   }
-  
+
   .header h1 {
     font-size: 18px;
-    text-align: center; /* Center header for better mobile flow */
+    text-align: center;
+    /* Center header for better mobile flow */
   }
 
   .header-line {
     text-align: center;
     display: flex;
-    flex-direction: column; /* Stack contact info (Email, Phone, LinkedIn) */
+    flex-direction: column;
+    /* Stack contact info (Email, Phone, LinkedIn) */
     gap: 4px;
   }
 }
@@ -122,11 +131,17 @@ li {
 @media (max-width: 480px) {
   .resume {
     padding: 15px;
-    font-size: 9pt; /* Further reduction to keep lines from wrapping too much */
+    font-size: 9pt;
+    /* Further reduction to keep lines from wrapping too much */
   }
 
-  h1 { font-size: 1.4rem; }
-  h2 { font-size: 1.1rem; }
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
 
   /* Ensure the Download button is easy to hit on mobile */
   .download-btn {
@@ -140,8 +155,9 @@ li {
 /* This ensures that when the user prints/saves as PDF, it looks like a real resume */
 @media print {
   .download-btn {
-    display: none; 
+    display: none;
   }
+
   .resume {
     padding: 0;
     margin: 0;

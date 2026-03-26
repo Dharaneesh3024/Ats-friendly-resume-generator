@@ -22,6 +22,7 @@ const AtsTemplate = ({ resume }) => {
         <p className="header-line">
           {header.email && `${header.email} | `}
           {header.phone && `${header.phone} | `}
+          {header.location && `${header.location} | `}
           {header.linkedin && `${header.linkedin} | `}
           {header.github}
         </p>
@@ -74,7 +75,7 @@ const AtsTemplate = ({ resume }) => {
           {projects.map((proj, index) => (
             <div key={index} className="item">
               <p className="item-title">
-                <strong>{proj.title}</strong>
+                <strong>{proj.title}</strong> {proj.link && <a href={proj.link} target="_blank" rel="noreferrer" style={{fontSize: '0.8em', marginLeft: '5px'}}> [Link]</a>}
               </p>
               <p>{proj.description}</p>
               <p>
@@ -102,7 +103,7 @@ const AtsTemplate = ({ resume }) => {
                 <strong>{edu.degree}</strong>, {edu.institution}
               </p>
               <p className="item-subtitle">
-                {edu.startYear} – {edu.endYear}
+                {edu.startYear} – {edu.endYear} {edu.gpa && `| GPA: ${edu.gpa}`}
               </p>
             </div>
           ))}

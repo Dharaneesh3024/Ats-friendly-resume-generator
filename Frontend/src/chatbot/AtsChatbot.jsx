@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useResume } from "../context/ResumeContext";
 import "./AtsSearchAI.css";
 
-export default function AtsChatbot({ isOpen, onClose }) {
+export default function AtsChatbot({ isOpen, onClose, contextualPrompt }) {
   const { resume } = useResume();
   const modalRef = useRef(null);
   const bottomRef = useRef(null);
@@ -14,30 +14,34 @@ export default function AtsChatbot({ isOpen, onClose }) {
   });
   const [loading, setLoading] = useState(false);
 
-  const skills = [
-    ...(resume.skills?.languages || []),
-    ...(resume.skills?.frameworks || []),
-    ...(resume.skills?.tools || []),
-  ];
-
-  /* SAVE CHAT HISTORY */
+  /* AUTO-TRIGGER CONTEXTUAL PROMPT */
   useEffect(() => {
-    localStorage.setItem("ats_ai_messages", JSON.stringify(messages));
-  }, [messages]);
+    if (isOpen && contextualPrompt) {
+      handleContextualSuggest(contextualPrompt);
+    }
+  }, [isOpen, contextualPrompt]);
 
-  /* CLOSE ON OUTSIDE CLICK */
-  useEffect(() => {
-    const handler = (e) => {
-      if (modalRef.current && !modalRef.current.contains(e.target)) onClose();
-    };
-    if (isOpen) document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
-  }, [isOpen, onClose]);
+  const handleContextualSuggest = async (prompt) => {
+    const userMessage = { type: "user", text: prompt };
+    setMessages((prev) => [...prev, userMessage]);
+    setLoading(true);
 
-  /* SCROLL TO BOTTOM ON NEW MESSAGE */
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
+    try {
+      const res = await fetch("https://resume-generator-server-sepia.vercel.app/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: prompt }),
+      });
+
+      const data = await res.json();
+      const aiMessage = { type: "ai", text: data.answer || "No response." };
+      setMessages((prev) => [...prev, aiMessage]);
+    } catch (err) {
+      setMessages((prev) => [...prev, { type: "ai", text: "AI server error." }]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const sendMessage = async () => {
     if (!query.trim()) return;

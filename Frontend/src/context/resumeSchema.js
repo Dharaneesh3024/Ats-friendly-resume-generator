@@ -3,6 +3,7 @@ const resumeSchema = {
     fullName: "",
     email: "",
     phone: "",
+    location: "", // Added
     linkedin: "",
     github: ""
   },
